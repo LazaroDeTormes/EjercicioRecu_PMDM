@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btnAtrasColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atrás"/>
+
+    <Button
+        android:id="@+id/btnInicioColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnSalirColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:visibility="gone"/>
+
+
+
+
+</LinearLayout>

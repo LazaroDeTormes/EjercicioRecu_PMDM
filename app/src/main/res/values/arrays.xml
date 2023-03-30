@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="numCas">
+        <item>4 casillas</item>
+        <item>6 casillas</item>
+        <item>9 casillas</item>
+    </string-array>
+
+
+
+</resources>
