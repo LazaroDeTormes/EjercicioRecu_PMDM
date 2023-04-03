@@ -33,25 +33,36 @@ public class eliminar extends AppCompatActivity {
 
         String col = i.getStringExtra("color");
 
-        if (col.equals("red")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.red));
-        } else if (col.equals("blue")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.blue));
-        }else if (col.equals("yellow")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.yellow));
-        }else if (col.equals("green")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.green));
-        }else if (col.equals("celeste")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.celeste));
-        }else if (col.equals("brown")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.brown));
-        }else if (col.equals("lavander")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.purple_200));
-        }else if (col.equals("black")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.black));
-        }else if (col.equals("white")){
-            layMuestra.setBackgroundColor(getResources().getColor(R.color.white));
+        switch (col) {
+            case "red":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.red));
+                break;
+            case "blue":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.blue));
+                break;
+            case "yellow":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.yellow));
+                break;
+            case "green":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.green));
+                break;
+            case "celeste":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.celeste));
+                break;
+            case "brown":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.brown));
+                break;
+            case "lavander":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.purple_200));
+                break;
+            case "black":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.black));
+                break;
+            case "white":
+                layMuestra.setBackgroundColor(getResources().getColor(R.color.white));
+                break;
         }
+
 
         btnEntendido.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +72,10 @@ public class eliminar extends AppCompatActivity {
                     finish();
                     Toast.makeText(eliminar.this, "¡Me alegra que te guste!", Toast.LENGTH_SHORT).show();
                 } else {
-                    finishActivity(RESULT_OK);
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    intent.putExtra("color", col);
+                    setResult(RESULT_OK, intent);
                     finish();
 
                 }
