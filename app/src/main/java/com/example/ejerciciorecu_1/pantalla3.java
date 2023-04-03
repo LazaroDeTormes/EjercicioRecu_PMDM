@@ -30,7 +30,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "red");
 
                 startActivity(i);
@@ -41,7 +41,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "blue");
 
                 startActivity(i);
@@ -52,7 +52,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "yellow");
 
                 startActivity(i);
@@ -63,7 +63,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "green");
 
                 startActivity(i);
@@ -74,7 +74,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "celeste");
 
                 startActivity(i);
@@ -85,7 +85,7 @@ public class pantalla3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(pantalla3.this, rojo.class);
-                i.putExtra("flag","6");
+                i.putExtra("flag","9");
                 i.putExtra("color", "brown");
 
                 startActivity(i);

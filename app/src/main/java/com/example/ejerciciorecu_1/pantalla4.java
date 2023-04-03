@@ -31,8 +31,7 @@ public class pantalla4 extends AppCompatActivity {
         lR3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "red");
 
                 startActivity(i);
@@ -42,8 +41,7 @@ public class pantalla4 extends AppCompatActivity {
         lAz3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "blue");
 
                 startActivity(i);
@@ -53,8 +51,7 @@ public class pantalla4 extends AppCompatActivity {
         lAm3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "yellow");
 
                 startActivity(i);
@@ -64,8 +61,7 @@ public class pantalla4 extends AppCompatActivity {
         lV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "green");
 
                 startActivity(i);
@@ -75,8 +71,7 @@ public class pantalla4 extends AppCompatActivity {
         lC3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "celeste");
 
                 startActivity(i);
@@ -86,8 +81,7 @@ public class pantalla4 extends AppCompatActivity {
         lM3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "brown");
 
                 startActivity(i);
@@ -97,8 +91,7 @@ public class pantalla4 extends AppCompatActivity {
         lL3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "lavander");
 
                 startActivity(i);
@@ -108,8 +101,7 @@ public class pantalla4 extends AppCompatActivity {
         lB3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "black");
 
                 startActivity(i);
@@ -119,8 +111,7 @@ public class pantalla4 extends AppCompatActivity {
         lW3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, rojo.class);
-                i.putExtra("flag","9");
+                Intent i = new Intent(pantalla4.this, eliminar.class);
                 i.putExtra("color", "white");
 
                 startActivity(i);
