@@ -79,9 +79,18 @@ public class rojo extends AppCompatActivity {
         btnIC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishActivity(RESULT_OK);
-                finish();
+                Intent intent = new Intent(rojo.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                
 
+            }
+        });
+
+        btnSC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
             }
         });
 

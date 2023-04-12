@@ -20,6 +20,7 @@
 
 
         <LinearLayout
+            android:id="@+id/roj"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -32,6 +33,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ama"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -42,6 +44,7 @@
 
 
         <LinearLayout
+            android:id="@+id/cel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -58,6 +61,7 @@
         android:layout_weight="1">
 
         <LinearLayout
+            android:id="@+id/ver"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -68,6 +72,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/azu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -79,6 +84,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/mar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
