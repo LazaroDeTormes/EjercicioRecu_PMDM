@@ -2,6 +2,9 @@ package com.example.ejerciciorecu_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +18,8 @@ public class rojo extends AppCompatActivity {
 
     private LinearLayout layPrin;
     private Button btnAC, btnIC, btnSC;
+    private AlertDialog.Builder ventana;
+    private static final int DIALOGO_SALIR = 1;
 
 
     @Override
@@ -90,7 +95,9 @@ public class rojo extends AppCompatActivity {
         btnSC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishAffinity();
+
+                showDialog(DIALOGO_SALIR);
+
             }
         });
 
@@ -102,5 +109,29 @@ public class rojo extends AppCompatActivity {
 
         finishActivity(RESULT_OK);
         finish();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+        ventana = new AlertDialog.Builder(this);
+        ventana.setTitle("Saliendo...")
+                .setIcon(R.drawable.icon)
+                .setMessage(R.string.s1)
+                .setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setPositiveButton("salir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        finishAffinity();
+                    }
+                });
+
+        return ventana.create();
     }
 }

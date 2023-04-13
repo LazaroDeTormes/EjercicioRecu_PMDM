@@ -3,6 +3,8 @@ package com.example.ejerciciorecu_1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btn1, btn2, btn3, btn4, btnVamos;
     private LinearLayout layBot, laySpi;
     private Spinner spn;
+    private AlertDialog.Builder ventana;
+
+    private static final int DIALOGO_DESCRIPCION_1 = 1;
+    private static final int DIALOGO_DESCRIPCION_2 = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
         }
         );
 
+        btn1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showDialog(DIALOGO_DESCRIPCION_1);
+                return false;
+            }
+        });
+
         btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -56,27 +70,33 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        btn2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showDialog(DIALOGO_DESCRIPCION_2);
+                return false;
+            }
+        });
+
         btn3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-                        Intent i = new Intent(MainActivity.this, pantalla3.class);
-                        startActivity(i);
+                Intent i = new Intent(MainActivity.this, pantalla3.class);
+                startActivity(i);
 
-                    }
-                }
-        );
+            }
+        });
 
         btn4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-                        Intent i = new Intent(MainActivity.this, pantalla4.class);
-                        startActivity(i);
+                Intent i = new Intent(MainActivity.this, pantalla4.class);
+                startActivity(i);
 
-                    }
-                }
-        );
+            }
+        });
 
         btnVamos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,5 +140,23 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    protected Dialog onCreateDialog(int id){
+        switch (id){
+            case DIALOGO_DESCRIPCION_1:
+                ventana = new AlertDialog.Builder(this);
+                ventana.setTitle("Pantalla 1")
+                        .setIcon(R.drawable.icon)
+                        .setMessage(R.string.p1);
+                break;
+            case DIALOGO_DESCRIPCION_2:
+                ventana = new AlertDialog.Builder(this);
+                ventana.setTitle("Pantalla 2")
+                        .setIcon(R.drawable.icon)
+                        .setMessage(R.string.p2);
+                break;
+        }
+        return ventana.create();
     }
 }

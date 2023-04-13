@@ -11,11 +11,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class pantalla4 extends AppCompatActivity {
+public class pantalla4 extends AppCompatActivity implements View.OnClickListener {
 
     private static final int CODIGO = 1;
 
     private LinearLayout lR3, lAm3, lAz3, lV3, lC3, lM3, lL3, lN3, lB3;
+
+    private String color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,95 +38,25 @@ public class pantalla4 extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        lR3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "red");
+        lR3.setOnClickListener(this);
 
-                startActivityForResult(i, CODIGO);
-            }
-        });
+        lAz3.setOnClickListener(this);
 
-        lAz3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "blue");
+        lAm3.setOnClickListener(this);
 
-                startActivityForResult(i, CODIGO);
-            }
-        });
+        lV3.setOnClickListener(this);
 
-        lAm3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "yellow");
+        lC3.setOnClickListener(this);
 
-                startActivityForResult(i, CODIGO);
-            }
-        });
+        lM3.setOnClickListener(this);
 
-        lV3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "green");
+        lL3.setOnClickListener(this);
 
-                startActivityForResult(i, CODIGO);
-            }
-        });
+        lN3.setOnClickListener(this);
 
-        lC3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "celeste");
+        lB3.setOnClickListener(this);
 
-                startActivityForResult(i, CODIGO);
-            }
-        });
 
-        lM3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "brown");
-
-                startActivityForResult(i, CODIGO);
-            }
-        });
-
-        lL3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "lavander");
-
-                startActivityForResult(i, CODIGO);
-            }
-        });
-
-        lN3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "black");
-
-                startActivityForResult(i, CODIGO);
-            }
-        });
-
-        lB3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(pantalla4.this, eliminar.class);
-                i.putExtra("color", "white");
-
-                startActivityForResult(i, CODIGO);
-            }
-        });
     }
 
     @Override
@@ -175,6 +107,13 @@ public class pantalla4 extends AppCompatActivity {
         }
     }
 
+    public void enviarDatos(String color){
+        Intent i = new Intent(pantalla4.this, eliminar.class);
+        i.putExtra("color", color);
+
+        startActivityForResult(i, CODIGO);
+    }
+
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
@@ -190,6 +129,65 @@ public class pantalla4 extends AppCompatActivity {
         outState.putInt("lB", lB3.getVisibility());
 
 
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        lR3.setVisibility(savedInstanceState.getInt("lR"));
+        lAz3.setVisibility(savedInstanceState.getInt("lAz"));
+        lAm3.setVisibility(savedInstanceState.getInt("lAm"));
+        lV3.setVisibility(savedInstanceState.getInt("lV"));
+        lC3.setVisibility(savedInstanceState.getInt("lC"));
+        lM3.setVisibility(savedInstanceState.getInt("lM"));
+        lL3.setVisibility(savedInstanceState.getInt("lL"));
+        lN3.setVisibility(savedInstanceState.getInt("lN"));
+        lB3.setVisibility(savedInstanceState.getInt("lB"));
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch(v.getId()){
+            case R.id.layRojo3:
+                color = "red";
+                enviarDatos(color);
+                break;
+            case R.id.layAzul3:
+                color = "blue";
+                enviarDatos(color);
+                break;
+            case R.id.layAmarillo3:
+                color = "yellow";
+                enviarDatos(color);
+                break;
+            case R.id.layVerde3:
+                color = "green";
+                enviarDatos(color);
+                break;
+            case R.id.layCeleste3:
+                color = "celeste";
+                enviarDatos(color);
+                break;
+            case R.id.layMarron3:
+                color = "brown";
+                enviarDatos(color);
+                break;
+            case R.id.layLavanda3:
+                color = "lavander";
+                enviarDatos(color);
+                break;
+            case R.id.layNegro3:
+                color = "black";
+                enviarDatos(color);
+                break;
+            case R.id.layBlanco3:
+                color = "white";
+                enviarDatos(color);
+                break;
+        }
 
     }
 }

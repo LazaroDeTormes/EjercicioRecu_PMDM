@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EjercicioRecu_1</string>
+
+
+    <string name="p1">Pantalla con cuatro colores, cada cual lleva a una pantalla con un botón de retroceso.</string>
+    <string name="p2">Pantalla con seis colores, cada cual lleva a una pantalla con un botón de retroceso y otro de vuelta al inicio.</string>
+    <string name="s1">¿Está seguro de salir?</string>
+
 </resources>
