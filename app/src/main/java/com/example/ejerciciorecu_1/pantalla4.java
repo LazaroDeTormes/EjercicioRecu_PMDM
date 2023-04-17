@@ -115,8 +115,8 @@ public class pantalla4 extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
         outState.putInt("lR", lR3.getVisibility());
         outState.putInt("lAz", lAz3.getVisibility());
