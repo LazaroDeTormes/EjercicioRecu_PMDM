@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:visibility="gone"
         >
 
         <Button
@@ -58,6 +59,42 @@
             android:layout_height="wrap_content"
             android:text="Vamos"/>
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layIni"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/fondo1"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/txtBnv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BIENVENIDO"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_700"
+            android:padding="30sp"
+            android:layout_marginBottom="20sp"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/txtJgm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿JUGAMOS?"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_700"
+            android:padding="30sp"
+            android:layout_marginTop="20sp"
+            android:background="@color/white"/>
 
     </LinearLayout>
 

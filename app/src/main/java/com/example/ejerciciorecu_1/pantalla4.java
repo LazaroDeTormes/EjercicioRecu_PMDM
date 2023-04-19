@@ -132,19 +132,23 @@ public class pantalla4 extends AppCompatActivity implements View.OnClickListener
 
     }
 
+
+
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        lR3.setVisibility(savedInstanceState.getInt("lR"));
-        lAz3.setVisibility(savedInstanceState.getInt("lAz"));
-        lAm3.setVisibility(savedInstanceState.getInt("lAm"));
-        lV3.setVisibility(savedInstanceState.getInt("lV"));
-        lC3.setVisibility(savedInstanceState.getInt("lC"));
-        lM3.setVisibility(savedInstanceState.getInt("lM"));
-        lL3.setVisibility(savedInstanceState.getInt("lL"));
-        lN3.setVisibility(savedInstanceState.getInt("lN"));
-        lB3.setVisibility(savedInstanceState.getInt("lB"));
+        if (savedInstanceState != null) {
+            lR3.setVisibility(savedInstanceState.getInt("lR"));
+            lAz3.setVisibility(savedInstanceState.getInt("lAz"));
+            lAm3.setVisibility(savedInstanceState.getInt("lAm"));
+            lV3.setVisibility(savedInstanceState.getInt("lV"));
+            lC3.setVisibility(savedInstanceState.getInt("lC"));
+            lM3.setVisibility(savedInstanceState.getInt("lM"));
+            lL3.setVisibility(savedInstanceState.getInt("lL"));
+            lN3.setVisibility(savedInstanceState.getInt("lN"));
+            lB3.setVisibility(savedInstanceState.getInt("lB"));
+        }
     }
 
     @Override

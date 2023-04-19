@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/menuBot"
-        android:title="Botones"/>
+        android:id="@+id/formas"
+        android:title="Formas de acceso">
+        <menu>
+            <item
+                android:id="@+id/menuBot"
+                android:title="Botones"/>
+            <item
+                android:id="@+id/menuSpi"
+                android:title="Desplegable"/>
+            <item
+                android:id="@+id/menuFondo"
+                android:title="Menús">
+
+                <menu>
+
+                    <item
+                        android:id="@+id/menuP1"
+                        android:title="Pantalla 1"/>
+                    <item
+                        android:id="@+id/menuP2"
+                        android:title="Pantalla 2"/>
+                    <item
+                        android:id="@+id/menuP3"
+                        android:title="Pantalla 3"/>
+                    <item
+                        android:id="@+id/menuP4"
+                        android:title="Pantalla 4"/>
+
+                </menu>
+
+
+            </item>
+        </menu>
+    </item>
+
     <item
-        android:id="@+id/menuSpi"
-        android:title="Desplegable"/>
+        android:id="@+id/menuInicio"
+        android:title="Inicio"/>
+    <item
+        android:id="@+id/menuFin"
+        android:title="Finalizar"/>
+    <item
+        android:id="@+id/menuAcercaDe"
+        android:title="Acerca de"/>
 </menu>
