@@ -47,12 +47,26 @@
         android:visibility="gone"
         >
 
-        <Spinner
-            android:id="@+id/spinner"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/numCas"/>
+            android:orientation="horizontal"
+            android:gravity="center">
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/numCas"/>
+
+            <Spinner
+                android:id="@+id/spinnerPad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="20sp"/>
+
+        </LinearLayout>
         <Button
             android:id="@+id/btnVamos"
             android:layout_width="wrap_content"
@@ -70,7 +84,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:background="@drawable/fondo1"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/txtBnv"
@@ -95,6 +109,31 @@
             android:padding="30sp"
             android:layout_marginTop="20sp"
             android:background="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layLista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elige pantalla"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <ListView
+            android:id="@+id/listaPantallas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30sp"/>
+
+
 
     </LinearLayout>
 

@@ -13,20 +13,28 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btn1, btn2, btn3, btn4, btnVamos;
-    private LinearLayout layBot, laySpi, layIni;
-    private Spinner spn;
+    private LinearLayout layBot, laySpi, layIni, layLis;
+    private Spinner spn, spnPad;
     private AlertDialog.Builder ventana;
     private Class pantalla;
     private TextView bienvenido, jugamos;
+    private String[] seisPaneles = {"Sin Padding", "Con Padding"};
+    private ArrayList<PojoPantalla> pojoPantallas;
+    private ListView listaPantallas;
 
     private static final int DIALOGO_DESCRIPCION_1 = 1;
     private static final int DIALOGO_DESCRIPCION_2 = 2;
@@ -45,15 +53,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layBot = findViewById(R.id.layBtns);
         laySpi = findViewById(R.id.laySpn);
         layIni = findViewById(R.id.layIni);
+        layLis = findViewById(R.id.layLista);
         spn = findViewById(R.id.spinner);
+        spnPad = findViewById(R.id.spinnerPad);
         bienvenido = findViewById(R.id.txtBnv);
         jugamos = findViewById(R.id.txtJgm);
+        listaPantallas = findViewById(R.id.listaPantallas);
+        pojoPantallas = new ArrayList<>();
+
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
         btnVamos.setOnClickListener(this);
+
+        pojoPantallas.add(new PojoPantalla("4 casillas", "Pantalla con cuatro paneles", "4"));
+        pojoPantallas.add(new PojoPantalla("6 casillas", "Pantalla con seis paneles", "6"));
+        pojoPantallas.add(new PojoPantalla("9 casillas", "Pantalla con nueve paneles", "9"));
 
         btn1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -73,7 +90,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         registerForContextMenu(bienvenido);
         registerForContextMenu(jugamos);
+
+        ArrayAdapter<String> adaptadorSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, seisPaneles);
+        spnPad.setAdapter(adaptadorSpinner);
+
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (spn.getSelectedItem().equals("6 casillas")){
+                    spnPad.setVisibility(View.VISIBLE);
+                } else {
+                    spnPad.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        AdaptadorPersonalizado adaptadorLista = new AdaptadorPersonalizado(this, R.layout.fila, pojoPantallas);
+        listaPantallas.setAdapter(adaptadorLista);
+
     }
+
+
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -132,18 +176,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 layBot.setVisibility(View.VISIBLE);
                 laySpi.setVisibility(View.GONE);
                 layIni.setVisibility(View.GONE);
+                layLis.setVisibility(View.GONE);
                 return true;
             case R.id.menuSpi:
                 Toast.makeText(this, "Acceso mediante desplegable", Toast.LENGTH_SHORT).show();
                 layBot.setVisibility(View.GONE);
                 laySpi.setVisibility(View.VISIBLE);
                 layIni.setVisibility(View.GONE);
+                layLis.setVisibility(View.GONE);
                 return true;
             case R.id.menuInicio:
                 Toast.makeText(this, "Inicio", Toast.LENGTH_SHORT).show();
                 layBot.setVisibility(View.GONE);
                 laySpi.setVisibility(View.GONE);
                 layIni.setVisibility(View.VISIBLE);
+                layLis.setVisibility(View.GONE);
+                return true;
+            case R.id.menuLista:
+                Toast.makeText(this, "Acceso mediante lista", Toast.LENGTH_SHORT).show();
+                layBot.setVisibility(View.GONE);
+                laySpi.setVisibility(View.GONE);
+                layIni.setVisibility(View.GONE);
+                layLis.setVisibility(View.VISIBLE);
                 return true;
             case R.id.menuFin:
                 showDialog(DIALOGO_SALIR);
@@ -236,8 +290,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     pantalla = pantalla1.class;
                     lanzarIntent(pantalla);
                 } else if (spn.getSelectedItem().equals("6 casillas")){
-                    pantalla = pantalla3.class;
-                    lanzarIntent(pantalla);
+                    if (spnPad.getSelectedItem().equals("Sin Padding")){
+                        pantalla = pantalla2.class;
+                        lanzarIntent(pantalla);
+                    } else {
+                        pantalla = pantalla3.class;
+                        lanzarIntent(pantalla);
+                    }
                 } else if (spn.getSelectedItem().equals("9 casillas")){
                     pantalla = pantalla4.class;
                     lanzarIntent(pantalla);
@@ -245,4 +304,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+
+
 }
