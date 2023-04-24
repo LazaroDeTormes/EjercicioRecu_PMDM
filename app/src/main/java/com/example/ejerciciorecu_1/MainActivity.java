@@ -23,18 +23,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn1, btn2, btn3, btn4, btnVamos;
+    private Button btn1, btn2, btn3, btn4, btnVamos, btnAtrasListaPad;
     private LinearLayout layBot, laySpi, layIni, layLis;
     private Spinner spn, spnPad;
     private AlertDialog.Builder ventana;
     private Class pantalla;
     private TextView bienvenido, jugamos;
-    private String[] seisPaneles = {"Sin Padding", "Con Padding"};
+    private final String[] SEISPANELES = {"Sin Padding", "Con Padding"};
     private ArrayList<PojoPantalla> pojoPantallas;
-    private ListView listaPantallas;
+    private ListView listaPantallas, listaVariantes;
 
     private static final int DIALOGO_DESCRIPCION_1 = 1;
     private static final int DIALOGO_DESCRIPCION_2 = 2;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         btnVamos = findViewById(R.id.btnVamos);
+        btnAtrasListaPad = findViewById(R.id.btnAtrasListaPad);
         layBot = findViewById(R.id.layBtns);
         laySpi = findViewById(R.id.laySpn);
         layIni = findViewById(R.id.layIni);
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bienvenido = findViewById(R.id.txtBnv);
         jugamos = findViewById(R.id.txtJgm);
         listaPantallas = findViewById(R.id.listaPantallas);
+        listaVariantes = findViewById(R.id.listaVariantes);
         pojoPantallas = new ArrayList<>();
 
 
@@ -67,10 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
         btnVamos.setOnClickListener(this);
+        btnAtrasListaPad.setOnClickListener(this);
 
         pojoPantallas.add(new PojoPantalla("4 casillas", "Pantalla con cuatro paneles", "4"));
         pojoPantallas.add(new PojoPantalla("6 casillas", "Pantalla con seis paneles", "6"));
         pojoPantallas.add(new PojoPantalla("9 casillas", "Pantalla con nueve paneles", "9"));
+
 
         btn1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -88,10 +93,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        listaPantallas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                for (int k = 0; k < pojoPantallas.size(); k++){
+                    if (parent.getItemAtPosition(position).equals(pojoPantallas.get(k))){
+                        if (pojoPantallas.get(k).getNum().equals("4")){
+                            lanzarIntent(pantalla1.class);
+                        } else if (pojoPantallas.get(k).getNum().equals("9")){
+                            lanzarIntent(pantalla4.class);
+                        } else {
+                            listaPantallas.setVisibility(View.GONE);
+                            listaVariantes.setVisibility(View.VISIBLE);
+                            btnAtrasListaPad.setVisibility(View.VISIBLE);
+
+                        }
+                    }
+                }
+
+            }
+        });
+
+        listaVariantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < SEISPANELES.length; i++){
+                    if (parent.getItemAtPosition(position).equals(SEISPANELES[i])){
+                        if (SEISPANELES[i].equals("Sin Padding")){
+                            lanzarIntent(pantalla2.class);
+                        } else {
+                            lanzarIntent(pantalla3.class);
+                        }
+                    }
+                }
+            }
+        });
+
         registerForContextMenu(bienvenido);
         registerForContextMenu(jugamos);
 
-        ArrayAdapter<String> adaptadorSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, seisPaneles);
+        ArrayAdapter<String> adaptadorSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, SEISPANELES);
         spnPad.setAdapter(adaptadorSpinner);
 
         spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -113,7 +155,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AdaptadorPersonalizado adaptadorLista = new AdaptadorPersonalizado(this, R.layout.fila, pojoPantallas);
         listaPantallas.setAdapter(adaptadorLista);
+        AdaptadorPersonalizadoPadding adaptadorLista2 = new AdaptadorPersonalizadoPadding(this, R.layout.filapadding, SEISPANELES);
+        listaVariantes.setAdapter(adaptadorLista2);
 
+        Toast.makeText(this, Arrays.toString(SEISPANELES), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -198,6 +243,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 laySpi.setVisibility(View.GONE);
                 layIni.setVisibility(View.GONE);
                 layLis.setVisibility(View.VISIBLE);
+
+                listaPantallas.setVisibility(View.VISIBLE);
+                listaVariantes.setVisibility(View.GONE);
+                btnAtrasListaPad.setVisibility(View.GONE);
                 return true;
             case R.id.menuFin:
                 showDialog(DIALOGO_SALIR);
@@ -301,6 +350,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     pantalla = pantalla4.class;
                     lanzarIntent(pantalla);
                 }
+            case R.id.btnAtrasListaPad:
+                listaPantallas.setVisibility(View.VISIBLE);
+                listaVariantes.setVisibility(View.GONE);
+                btnAtrasListaPad.setVisibility(View.GONE);
+                break;
 
         }
     }

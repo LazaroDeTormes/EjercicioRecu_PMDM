@@ -35,7 +35,7 @@ public class AdaptadorPersonalizado extends ArrayAdapter {
 
         ViewHolder vh;
 
-        if (fila != null){
+        if (fila == null){
 
             LayoutInflater inflador = contexto.getLayoutInflater();
             fila = inflador.inflate(R.layout.fila, null);
