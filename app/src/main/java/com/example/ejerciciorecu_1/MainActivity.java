@@ -380,6 +380,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("nombre", etNombre.getText().toString());
                         editor.apply();
+                    } else {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.remove("nombre");
+                        editor.apply();
                     }
                 } else {
                     Toast.makeText(this, "Introduce un nombre", Toast.LENGTH_SHORT).show();
