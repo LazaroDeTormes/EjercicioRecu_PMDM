@@ -118,7 +118,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,18 +131,22 @@
             android:id="@+id/listaPantallas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30sp"
+            android:layout_margin="30dp"
             android:background="@color/teal_200"
             android:visibility="visible"
+            android:divider="@color/purple_700"
+            android:dividerHeight="5sp"
             />
 
         <ListView
             android:id="@+id/listaVariantes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30sp"
+            android:layout_margin="30dp"
             android:background="@color/orange"
             android:visibility="gone"
+            android:divider="@color/red"
+            android:dividerHeight="5sp"
             />
 
         <Button
@@ -151,6 +155,48 @@
             android:layout_height="wrap_content"
             android:text="ATrás"
             android:visibility="gone"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layNombreUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pon tu nombre"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:capitalize="characters"
+            android:textStyle="bold"/>
+
+        <CheckBox
+            android:id="@+id/ckbGuardarNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Desea guardar el nombre?"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnGuardarNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="guardar"/>
+
+
 
 
 

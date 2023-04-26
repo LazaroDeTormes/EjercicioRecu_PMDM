@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingRight="20dp"
+    android:paddingVertical="10dp">
 
     <ImageView
         android:id="@+id/iconoFila"
-        android:layout_width="30sp"
-        android:layout_height="30sp"
-        android:layout_margin="20sp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
         android:src="@drawable/fondo1"/>
 
     <LinearLayout

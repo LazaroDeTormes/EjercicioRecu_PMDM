@@ -7,7 +7,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +18,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -27,8 +31,8 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn1, btn2, btn3, btn4, btnVamos, btnAtrasListaPad;
-    private LinearLayout layBot, laySpi, layIni, layLis;
+    private Button btn1, btn2, btn3, btn4, btnVamos, btnAtrasListaPad, btnGuardarNombre;
+    private LinearLayout layBot, laySpi, layIni, layLis, layNombre;
     private Spinner spn, spnPad;
     private AlertDialog.Builder ventana;
     private Class pantalla;
@@ -36,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String[] SEISPANELES = {"Sin Padding", "Con Padding"};
     private ArrayList<PojoPantalla> pojoPantallas;
     private ListView listaPantallas, listaVariantes;
+    private EditText etNombre;
+    private CheckBox ckbGNom;
+
+    private SharedPreferences sharedPreferences;
 
     private static final int DIALOGO_DESCRIPCION_1 = 1;
     private static final int DIALOGO_DESCRIPCION_2 = 2;
@@ -52,18 +60,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn4 = findViewById(R.id.btn4);
         btnVamos = findViewById(R.id.btnVamos);
         btnAtrasListaPad = findViewById(R.id.btnAtrasListaPad);
+        btnGuardarNombre = findViewById(R.id.btnGuardarNombre);
         layBot = findViewById(R.id.layBtns);
         laySpi = findViewById(R.id.laySpn);
         layIni = findViewById(R.id.layIni);
         layLis = findViewById(R.id.layLista);
+        layNombre = findViewById(R.id.layNombreUsuario);
         spn = findViewById(R.id.spinner);
         spnPad = findViewById(R.id.spinnerPad);
         bienvenido = findViewById(R.id.txtBnv);
         jugamos = findViewById(R.id.txtJgm);
         listaPantallas = findViewById(R.id.listaPantallas);
         listaVariantes = findViewById(R.id.listaVariantes);
+        etNombre = findViewById(R.id.etNombre);
+        ckbGNom = findViewById(R.id.ckbGuardarNombre);
+
+
         pojoPantallas = new ArrayList<>();
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -71,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn4.setOnClickListener(this);
         btnVamos.setOnClickListener(this);
         btnAtrasListaPad.setOnClickListener(this);
+        btnGuardarNombre.setOnClickListener(this);
 
         pojoPantallas.add(new PojoPantalla("4 casillas", "Pantalla con cuatro paneles", "4"));
         pojoPantallas.add(new PojoPantalla("6 casillas", "Pantalla con seis paneles", "6"));
@@ -158,7 +174,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AdaptadorPersonalizadoPadding adaptadorLista2 = new AdaptadorPersonalizadoPadding(this, R.layout.filapadding, SEISPANELES);
         listaVariantes.setAdapter(adaptadorLista2);
 
-        Toast.makeText(this, Arrays.toString(SEISPANELES), Toast.LENGTH_SHORT).show();
+
+        etNombre.setText(sharedPreferences.getString("nombre", ""));
     }
 
 
@@ -355,6 +372,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 listaVariantes.setVisibility(View.GONE);
                 btnAtrasListaPad.setVisibility(View.GONE);
                 break;
+            case R.id.btnGuardarNombre:
+                if (!etNombre.getText().toString().equals("")){
+                    layNombre.setVisibility(View.GONE);
+                    layLis.setVisibility(View.VISIBLE);
+                    if (ckbGNom.isChecked()){
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("nombre", etNombre.getText().toString());
+                        editor.apply();
+                    }
+                } else {
+                    Toast.makeText(this, "Introduce un nombre", Toast.LENGTH_SHORT).show();
+                }
+
 
         }
     }
